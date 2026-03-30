@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Autodílna Růžička | Autoservis Praha 14 – Travná</title>
+  <meta name="description" content="Autodílna Růžička – autoservis na Travné, Praha 14. Opravy vozidel, diagnostika, pneuservis, brzdy a příprava na STK. Tel: 603 464 314." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --warm-white: #FAFAF8;
+      --dark: #1A1A1A;
+      --red: #B91C1C;
+      --red-light: #FFF5F5;
+      --red-hover: #991818;
+      --grey: #6B6B6B;
+      --border: rgba(26, 26, 26, 0.10);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Cabin', sans-serif;
+      background: var(--warm-white);
+      color: var(--dark);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    em {
+      color: var(--red);
+      font-style: normal;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      height: 64px;
+      background: rgba(250, 250, 248, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--dark);
+      text-decoration: none;
+    }
+
+    .nav-logo span {
+      color: var(--red);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--grey);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--dark);
+    }
+
+    .nav-cta {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--warm-white);
+      background: var(--red);
+      padding: 10px 22px;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .nav-cta:hover {
+      background: var(--red-hover);
+    }
+
+    /* ─── HERO ─── */
+    #hero {
+      position: relative;
+      height: 100vh;
+      max-height: 100vh;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end;
+      padding: 0 48px 80px;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('images/hero.jpg');
+      background-size: cover;
+      background-position: center 30%;
+      z-index: 0;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(250, 250, 248, 0.08) 0%,
+        rgba(26, 26, 26, 0.55) 60%,
+        rgba(26, 26, 26, 0.85) 100%
+      );
+      z-index: 1;
+    }
+
+    .hero-monogram {
+      position: absolute;
+      top: 50%;
+      right: -2vw;
+      transform: translateY(-52%);
+      font-size: 40vw;
+      font-weight: 700;
+      line-height: 1;
+      color: var(--warm-white);
+      opacity: 0.04;
+      user-select: none;
+      pointer-events: none;
+      z-index: 2;
+      letter-spacing: -0.05em;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 3;
+      max-width: 720px;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--red);
+      background: rgba(185, 28, 28, 0.15);
+      border: 1px solid rgba(185, 28, 28, 0.3);
+      padding: 5px 14px;
+      margin-bottom: 28px;
+      opacity: 0;
+      animation: fadeUp 0.6s ease forwards 0.1s;
+    }
+
+    .hero-title {
+      font-size: clamp(40px, 6vw, 80px);
+      font-weight: 700;
+      line-height: 1.08;
+      color: var(--warm-white);
+      margin-bottom: 20px;
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards 0.25s;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(16px, 2vw, 20px);
+      font-weight: 400;
+      color: rgba(250, 250, 248, 0.7);
+      line-height: 1.55;
+      margin-bottom: 40px;
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards 0.4s;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards 0.55s;
+    }
+
+    .btn-primary {
+      font-family: 'Cabin', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--warm-white);
+      background: var(--red);
+      padding: 16px 32px;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+      display: inline-block;
+    }
+
+    .btn-primary:hover {
+      background: var(--red-hover);
+      transform: translateY(-1px);
+    }
+
+    .btn-ghost {
+      font-family: 'Cabin', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: rgba(250, 250, 248, 0.85);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: color 0.2s;
+    }
+
+    .btn-ghost:hover {
+      color: var(--warm-white);
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 32px;
+      right: 48px;
+      z-index: 3;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(250, 250, 248, 0.45);
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards 0.8s;
+    }
+
+    .scroll-line {
+      width: 40px;
+      height: 1px;
+      background: rgba(250, 250, 248, 0.3);
+    }
+
+    /* ─── SECTION SHARED ─── */
+    section {
+      padding: 96px 48px;
+    }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-size: clamp(28px, 3.5vw, 48px);
+      font-weight: 700;
+      line-height: 1.12;
+      color: var(--dark);
+      max-width: 560px;
+    }
+
+    /* ─── SERVICES ─── */
+    #sluzby {
+      background: var(--warm-white);
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .services-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 56px;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+
+    .service-card {
+      background: var(--warm-white);
+      border: 1px solid var(--border);
+      padding: 48px 40px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s;
+      opacity: 0;
+      transform: translateY(24px);
+    }
+
+    .service-card.visible {
+      animation: fadeUp 0.6s ease forwards;
+    }
+
+    .service-card:hover {
+      border-color: rgba(185, 28, 28, 0.25);
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--red);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+
+    .service-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .service-number {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      color: var(--red);
+      margin-bottom: 24px;
+    }
+
+    .service-icon {
+      font-size: 36px;
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .service-card h3 {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+
+    .service-card p {
+      font-size: 15px;
+      color: var(--grey);
+      line-height: 1.65;
+    }
+
+    .service-detail {
+      margin-top: 24px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+    }
+
+    .service-detail ul {
+      list-style: none;
+    }
+
+    .service-detail li {
+      font-size: 13px;
+      color: var(--grey);
+      padding: 5px 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .service-detail li::before {
+      content: '';
+      width: 5px;
+      height: 5px;
+      background: var(--red);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* ─── WHY / DARK PANEL ─── */
+    #proc-ruzicka {
+      background: var(--dark);
+      padding: 96px 48px;
+    }
+
+    .why-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .why-left .section-label {
+      color: rgba(185, 28, 28, 0.9);
+    }
+
+    .why-left .section-title {
+      color: var(--warm-white);
+      margin-bottom: 24px;
+    }
+
+    .why-left p {
+      font-size: 16px;
+      color: rgba(250, 250, 248, 0.6);
+      line-height: 1.7;
+      margin-bottom: 40px;
+    }
+
+    .why-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+    }
+
+    .stat-block {
+      background: rgba(250, 250, 248, 0.04);
+      border: 1px solid rgba(250, 250, 248, 0.08);
+      padding: 28px 24px;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .stat-block.visible {
+      animation: fadeUp 0.5s ease forwards;
+    }
+
+    .stat-number {
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--warm-white);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .stat-number span {
+      color: var(--red);
+    }
+
+    .stat-label {
+      font-size: 12px;
+      color: rgba(250, 250, 248, 0.45);
+      letter-spacing: 0.06em;
+    }
+
+    .why-right {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .why-item {
+      background: rgba(250, 250, 248, 0.03);
+      border: 1px solid rgba(250, 250, 248, 0.07);
+      padding: 28px 32px;
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      opacity: 0;
+      transform: translateY(16px);
+    }
+
+    .why-item.visible {
+      animation: fadeUp 0.5s ease forwards;
+    }
+
+    .why-item-icon {
+      font-size: 24px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .why-item h4 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--warm-white);
+      margin-bottom: 6px;
+    }
+
+    .why-item p {
+      font-size: 14px;
+      color: rgba(250, 250, 248, 0.5);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* ─── CONTACT ─── */
+    #kontakt {
+      background: var(--warm-white);
+      padding: 96px 48px;
+    }
+
+    .contact-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .contact-left .section-title {
+      margin-bottom: 16px;
+    }
+
+    .contact-left > p {
+      font-size: 16px;
+      color: var(--grey);
+      line-height: 1.65;
+      margin-bottom: 48px;
+    }
+
+    .contact-items {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .contact-item:first-child {
+      border-top: 1px solid var(--border);
+    }
+
+    .contact-item-icon {
+      font-size: 20px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .contact-item-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--grey);
+      margin-bottom: 4px;
+    }
+
+    .contact-item-value {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--dark);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    a.contact-item-value:hover {
+      color: var(--red);
+    }
+
+    .contact-item-sub {
+      font-size: 13px;
+      color: var(--grey);
+      margin-top: 2px;
+    }
+
+    .contact-right {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .contact-map {
+      width: 100%;
+      aspect-ratio: 4/3;
+      border: none;
+      filter: grayscale(0.3);
+    }
+
+    .wa-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      background: #25D366;
+      color: #fff;
+      text-decoration: none;
+      padding: 18px 32px;
+      font-family: 'Cabin', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      transition: background 0.2s, transform 0.2s;
+      width: 100%;
+    }
+
+    .wa-button:hover {
+      background: #1ebe5d;
+      transform: translateY(-1px);
+    }
+
+    .wa-icon {
+      font-size: 24px;
+      line-height: 1;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--dark);
+      padding: 40px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-logo {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--warm-white);
+      text-decoration: none;
+    }
+
+    .footer-logo span {
+      color: var(--red);
+    }
+
+    .footer-copy {
+      font-size: 12px;
+      color: rgba(250, 250, 248, 0.35);
+      letter-spacing: 0.04em;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .footer-links a {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(250, 250, 248, 0.4);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: rgba(250, 250, 248, 0.8);
+    }
+
+    /* ─── WHATSAPP FLOAT ─── */
+    .wa-float {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 200;
+      width: 56px;
+      height: 56px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+      transition: transform 0.2s, box-shadow 0.2s;
+      font-size: 26px;
+      line-height: 1;
+    }
+
+    .wa-float:hover {
+      transform: scale(1.08);
+      box-shadow: 0 6px 28px rgba(37, 211, 102, 0.55);
+    }
+
+    /* ─── ANIMATIONS ─── */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ─── MOBILE ─── */
+    @media (max-width: 900px) {
+      nav {
+        padding: 0 24px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      #hero {
+        padding: 0 24px 64px;
+      }
+
+      .hero-monogram {
+        font-size: 60vw;
+        right: -5vw;
+      }
+
+      section {
+        padding: 72px 24px;
+      }
+
+      #sluzby, #kontakt {
+        padding: 72px 24px;
+      }
+
+      #proc-ruzicka {
+        padding: 72px 24px;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+        gap: 2px;
+      }
+
+      .why-inner {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+
+      .contact-inner {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+
+      footer {
+        padding: 32px 24px;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .services-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .why-stats {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#hero" class="nav-logo">Autodílna <span>Růžička</span></a>
+    <ul class="nav-links">
+      <li><a href="#sluzby">Služby</a></li>
+      <li><a href="#proc-ruzicka">O nás</a></li>
+      <li><a href="#kontakt">Kontakt</a></li>
+    </ul>
+    <a href="tel:603464314" class="nav-cta">603 464 314</a>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-monogram" aria-hidden="true">Ř</div>
+    <div class="hero-content">
+      <div class="hero-tag">Autoservis · Praha 14</div>
+      <h1 class="hero-title">Růžička autodílna.<br>Praha 14, <em>Travná</em>.</h1>
+      <p class="hero-subtitle">Opravy vozidel na Travné, Praha 14. Poctivá práce.</p>
+      <div class="hero-actions">
+        <a href="tel:603464314" class="btn-primary">Zavolat: 603 464 314</a>
+        <a href="#sluzby" class="btn-ghost">
+          Naše služby
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <div class="scroll-line"></div>
+      Scroll
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="sluzby">
+    <div class="services-header">
+      <div>
+        <div class="section-label">Co umíme</div>
+        <h2 class="section-title">Komplexní péče<br>o vaše vozidlo</h2>
+      </div>
+      <a href="tel:603464314" class="btn-primary" style="white-space:nowrap">Objednat se</a>
+    </div>
+    <div class="services-grid">
+
+      <div class="service-card reveal">
+        <div class="service-number">01</div>
+        <span class="service-icon">🔧</span>
+        <h3>Kompletní opravy</h3>
+        <p>Motor, převodovka, podvozek, elektrika. Opravujeme všechny značky osobních i dodávkových vozidel.</p>
+        <div class="service-detail">
+          <ul>
+            <li>Opravy motoru a převodovky</li>
+            <li>Výměna oleje a filtrů</li>
+            <li>Opravy podvozku a řízení</li>
+            <li>Elektroinstalace vozidel</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-number">02</div>
+        <span class="service-icon">🔍</span>
+        <h3>Diagnostika + pneuservis</h3>
+        <p>Počítačová diagnostika závad. Kompletní pneuservis — přezutí, vyvážení, opravy defektů.</p>
+        <div class="service-detail">
+          <ul>
+            <li>Počítačová diagnostika OBD</li>
+            <li>Výměna a přezutí pneumatik</li>
+            <li>Vyvažování kol</li>
+            <li>Opravy defektů na počkání</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-number">03</div>
+        <span class="service-icon">🛑</span>
+        <h3>Brzdy & STK</h3>
+        <p>Kontrola a výměna brzdového systému. Příprava vozidla na technickou kontrolu STK bez starostí.</p>
+        <div class="service-detail">
+          <ul>
+            <li>Výměna brzdových destiček a kotoučů</li>
+            <li>Kontrola brzdové kapaliny</li>
+            <li>Příprava na STK a emise</li>
+            <li>Odstraňování závad po STK</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- WHY RUZICKA -->
+  <section id="proc-ruzicka">
+    <div class="why-inner">
+      <div class="why-left">
+        <div class="section-label">Proč Růžička</div>
+        <h2 class="section-title">Místní servis,<br><em style="color: var(--red)">na kterého se<br>můžete spolehnout</em></h2>
+        <p>Jsme rodinná autodílna v Praze 14. Žádné velké sítě, žádné zbytečné přirážky. Jen poctivá práce za férovou cenu.</p>
+
+        <div class="why-stats">
+          <div class="stat-block reveal-dark">
+            <div class="stat-number">13<span>+</span></div>
+            <div class="stat-label">Recenzí od zákazníků</div>
+          </div>
+          <div class="stat-block reveal-dark">
+            <div class="stat-number">Praha<span> 14</span></div>
+            <div class="stat-label">Travná, lokální servis</div>
+          </div>
+          <div class="stat-block reveal-dark">
+            <div class="stat-number">Po–Pá</div>
+            <div class="stat-label">8:00 – 17:00 hodin</div>
+          </div>
+          <div class="stat-block reveal-dark">
+            <div class="stat-number">Vše<span> na místě</span></div>
+            <div class="stat-label">Rychlé termíny</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="why-right">
+        <div class="why-item reveal-dark">
+          <div class="why-item-icon">💬</div>
+          <div>
+            <h4>Férová komunikace</h4>
+            <p>Před každou opravou dostanete jasnou cenu. Žádná překvapení na faktuře.</p>
+          </div>
+        </div>
+        <div class="why-item reveal-dark">
+          <div class="why-item-icon">⚡</div>
+          <div>
+            <h4>Rychlé termíny</h4>
+            <p>Stačí zavolat. Většinu oprav zvládneme stejný nebo následující den.</p>
+          </div>
+        </div>
+        <div class="why-item reveal-dark">
+          <div class="why-item-icon">📍</div>
+          <div>
+            <h4>Lokální, Praha 14</h4>
+            <p>Travná 472, Praha 14. Snadno dostupné, parkování přímo u dílny.</p>
+          </div>
+        </div>
+        <div class="why-item reveal-dark">
+          <div class="why-item-icon">🔩</div>
+          <div>
+            <h4>Kvalitní díly</h4>
+            <p>Používáme originální nebo certifikované náhradní díly s zárukou.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="kontakt">
+    <div class="contact-inner">
+      <div class="contact-left">
+        <div class="section-label">Kde nás najdete</div>
+        <h2 class="section-title">Zastavte se nebo<br>zavolejte</h2>
+        <p>Jsme tu pro vás od pondělí do pátku. Zavolajte dopředu a domluvíme termín na míru.</p>
+
+        <div class="contact-items">
+          <div class="contact-item">
+            <div class="contact-item-icon">📞</div>
+            <div>
+              <div class="contact-item-label">Telefon</div>
+              <a href="tel:603464314" class="contact-item-value">603 464 314</a>
+              <div class="contact-item-sub">Po–Pá 8:00–17:00</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">📍</div>
+            <div>
+              <div class="contact-item-label">Adresa</div>
+              <span class="contact-item-value">Travná 472, Praha 14</span>
+              <div class="contact-item-sub">198 00 Praha – Kyje</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">🕐</div>
+            <div>
+              <div class="contact-item-label">Otevírací doba</div>
+              <span class="contact-item-value">Po–Pá: 8:00–17:00</span>
+              <div class="contact-item-sub">Víkend zavřeno</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-right">
+        <iframe
+          class="contact-map"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2558.8!2d14.5670!3d50.1020!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470bef0000000001%3A0x0!2sTravn%C3%A1+472%2C+198+00+Praha+14!5e0!3m2!1scs!2scz!4v1700000000000!5m2!1scs!2scz"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Mapa – Autodílna Růžička, Travná 472, Praha 14">
+        </iframe>
+        <a href="https://wa.me/420603464314" class="wa-button" target="_blank" rel="noopener">
+          <span class="wa-icon">💬</span>
+          Napsat přes WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <a href="#hero" class="footer-logo">Autodílna <span>Růžička</span></a>
+    <div class="footer-links">
+      <a href="#sluzby">Služby</a>
+      <a href="#proc-ruzicka">O nás</a>
+      <a href="#kontakt">Kontakt</a>
+    </div>
+    <p class="footer-copy">© 2025 Autodílna Růžička · Travná 472, Praha 14 · 603 464 314</p>
+  </footer>
+
+  <!-- WHATSAPP FLOAT -->
+  <a href="https://wa.me/420603464314" class="wa-float" target="_blank" rel="noopener" aria-label="WhatsApp – Autodílna Růžička">
+    💬
+  </a>
+
+  <script>
+    // Scroll reveal
+    const observerOptions = { threshold: 0.12, rootMargin: '0px 0px -40px 0px' };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          const siblings = el.parentElement.querySelectorAll('.reveal, .reveal-dark');
+          const idx = Array.from(siblings).indexOf(el);
+          el.style.animationDelay = `${idx * 0.12}s`;
+          el.classList.add('visible');
+          observer.unobserve(el);
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.reveal, .reveal-dark').forEach(el => observer.observe(el));
+
+    // Nav scroll effect
+    const nav = document.querySelector('nav');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 60) {
+        nav.style.borderBottomColor = 'rgba(26,26,26,0.18)';
+      } else {
+        nav.style.borderBottomColor = 'var(--border)';
+      }
+    }, { passive: true });
+  </script>
+</body>
+</html>
